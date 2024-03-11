@@ -12,7 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+volatile bool run = false;
+
 int main()
 {
-  // FILL THIS OUT...
+  // Best to not run code that modifies registers not present on a VM, laptop
+  // or other computer.
+  if (run) {
+    // FILL THIS OUT...
+  }
 }
