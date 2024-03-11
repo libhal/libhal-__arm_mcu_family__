@@ -14,21 +14,20 @@
 
 #include <libhal-__platform__/output_pin.hpp>
 #include <libhal-armcortex/dwt_counter.hpp>
-#include <libhal-util/serial.hpp>
 #include <libhal-util/steady_clock.hpp>
 
-hal::status application()
+void application()
 {
   using namespace hal::literals;
   // TODO(libhal-target): Set the correct frequency and output pin driver
   hal::cortex_m::dwt_counter clock(1.0_MHz);
-  auto led = HAL_CHECK(hal::__platform__::output_pin::create());
+  hal::__platform__::output_pin led;
 
   while (true) {
     using namespace std::chrono_literals;
-    HAL_CHECK(led.level(false));
+    led.level(false);
     hal::delay(clock, 200ms);
-    HAL_CHECK(led.level(true));
+    led.level(true);
     hal::delay(clock, 200ms);
   }
 }

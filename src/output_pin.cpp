@@ -16,29 +16,21 @@
 
 namespace hal::__platform__ {  // NOLINT
 
-hal::result<output_pin> output_pin::create()
+void output_pin::driver_configure(
+  [[maybe_unused]] const settings& p_settings)  // Remove [[maybe_unused]]
 {
   // Fill this out
-  return output_pin();
 }
 
-hal::status output_pin::driver_configure(
-  [[maybe_unused]] const settings& p_settings)
+void output_pin::driver_level(
+  [[maybe_unused]] bool p_high)  // Remove [[maybe_unused]]
 {
   // Fill this out
-  return hal::success();
 }
 
-hal::result<hal::output_pin::set_level_t> output_pin::driver_level(
-  [[maybe_unused]] bool p_high)
+bool output_pin::driver_level()
 {
-  // Fill this out
-  return set_level_t{};
-}
-
-hal::result<hal::output_pin::level_t> output_pin::driver_level()
-{
-  // Fill this out
-  return hal::output_pin::level_t{ .state = true };
+  // Replace this with the correct implementation
+  return true;
 }
 }  // namespace hal::__platform__

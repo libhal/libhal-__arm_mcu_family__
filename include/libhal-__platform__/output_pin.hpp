@@ -20,13 +20,13 @@ namespace hal::__platform__ {  // NOLINT
 class output_pin : public hal::output_pin
 {
 public:
-  /// TODO: Update factory function
-  static hal::result<output_pin> create();
+  /// TODO: Update constructor
+  output_pin() = default;
 
 private:
   // Add constructor
-  hal::status driver_configure(const settings& p_settings) override;
-  hal::result<set_level_t> driver_level(bool p_high) override;
-  hal::result<level_t> driver_level() override;
+  void driver_configure(const settings& p_settings) override;
+  void driver_level(bool p_high) override;
+  bool driver_level() override;
 };
 }  // namespace hal::__platform__
