@@ -50,7 +50,7 @@ class libhal___platform___conan(ConanFile):
         return (self.options.platform == "profile1" or
                 self.options.platform == "profile2")
 
-    def add_linker_to_link_flags(self):
+    def add_linker_scripts_to_link_flags(self):
         platform = str(self.options.platform)
         self.cpp_info.exelinkflags = [
             "-L" + os.path.join(self.package_folder, "linker_scripts"),
@@ -66,7 +66,12 @@ class libhal___platform___conan(ConanFile):
         self.cpp_info.libs = ["libhal-__platform__"]
 
         if self.settings.os == "baremetal" and self._use_linker_script:
-            self.add_linker_to_link_flags()
+            self.add_linker_scripts_to_link_flags()
+
+            self.buildenv_info.define("LIBHAL_PLATFORM",
+                                      str(self.options.platform))
+            self.buildenv_info.define("LIBHAL_PLATFORM_LIBRARY",
+                                      "__platform__")
 
     def package_id(self):
         if self.info.options.get_safe("platform"):
