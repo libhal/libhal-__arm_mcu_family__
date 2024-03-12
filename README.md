@@ -6,7 +6,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/libhal/libhal-__platform__.svg)](https://github.com/libhal/libhal-__platform__/network)
 [![GitHub issues](https://img.shields.io/github/issues/libhal/libhal-__platform__.svg)](https://github.com/libhal/libhal-__platform__/issues)
 
-Target library for __platform__ series of devices.
+Platform library for __platform__ series of devices.
 
 ## Contributing
 
@@ -15,12 +15,6 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for details.
 ## License
 
 Apache 2.0; see [`LICENSE`](LICENSE) for details.
-
-## Disclaimer
-
-This project is not an official Google project. It is not supported by
-Google and Google specifically disclaims all warranties as to its quality,
-merchantability, or fitness for a particular purpose.
 
 ---
 
@@ -31,22 +25,22 @@ example of the sections a README should have.
 
 To make your own libhal library:
 
-1. press the green "Use this Template" button then.
-2. press the "Create a new repository".
+1. Press the green "Use this Template" button then.
+2. Press the "Create a new repository".
 3. Name it `libhal-<insert_platform_name>` and replace `<insert_platform_name>`
-  with the name of the device's family. For exmaple, if you want to make a
-  library for the MPU series of IMUs then call it `libhal-mpu`.
-4. Choose where to put the repo under,
+   with the name of the device's family. For exmaple, if you want to make a
+   library for the stm32f103 which is in the stm32f1 series of MCUs then call
+   it `libhal-stm32f1`.
+4. Choose where to put the repo under.
 5. Go to `settings` > `Pages` > `Build and deployment` > `Source` and set the
-  source to `Github Actions`.
+   source to `Github Actions`.
 6. Go to `Pull Requests` and merge the library rename pull request.
 7. Done!
 
 ## About the libhal-platform template
 
-The libhal-`__`platform`__` repository is a template for creating platform libraries
-in the libhal ecosystem. It provides a structured layout and a set of files to
-help you get started with creating your own platform library.
+The `libhal-__platform__` repository is a template for creating platform
+libraries in the libhal ecosystem. It provides a structured layout and a set of files to help you get started with creating your own platform library.
 
 ## .github/workflows
 
@@ -58,6 +52,10 @@ This directory contains GitHub Actions workflow files for continuous integration
   `libhal-trunk` package repository.
 - `take.yml`: This workflow is responsible for the "take" action, which assigns
   commits to
+- `deploy-version.yml`: A helper CI workflow that builds the library for each
+  target architecture/os/etc.
+- `0.0.1.yml`: A launch file. This file is used to manually release a version
+  of the project via the "work dispatch" function of github actions.
 - `update_name.yml`: This workflow updates the name of the repository when it's
   used as a template for a new repository.
 
@@ -78,7 +76,7 @@ code block in the file with the appropriate processor library.
 
 ```python
 # Replace with appropriate processor library
-self.requires("libhal-armcortex/[^2.2.1]")
+self.requires("libhal-armcortex/[^3.0.2]")
 ```
 
 ### Adding available platforms
@@ -132,14 +130,15 @@ Usually this information is put in the processor library's README.md.
 
 ## datasheets
 
-This directory is intended for storing datasheets related to the platform that
+This directory is intended for storing data sheets related to the platform that
 the library is being built for. It currently contains a placeholder file,
 `placeholder.txt`.
 
-Many datasheets are subject to copyright and that must be considered when adding
-the datasheet to a libhal repo. If the datasheet cannot be redistributed on the
-repo for copyright and/or license reasons, then a markdown file with a link to
-the datasheet (and potentially mirrors of it) is an acceptable alternative.
+Many data sheets are subject to copyright and that must be considered when
+adding the data sheet to a libhal repo. If the data sheet cannot be
+redistributed on the repo for copyright and/or license reasons, then a markdown
+file with a link to the data sheet (and potentially mirrors of it) is an
+acceptable alternative.
 
 ## demos
 
@@ -149,12 +148,6 @@ platform library. It includes:
 - `applications/blinker.cpp`: A sample application demonstrating usage of the
   platform library.
 - `main.cpp`: The main entry point for the demo applications.
-
-## docs
-
-This directory contains documentation for the platform library. It includes a
-Doxygen configuration file (`doxygen.conf`) and a set of files for customizing
-the Doxygen output.
 
 ## include/libhal-__platform__
 
