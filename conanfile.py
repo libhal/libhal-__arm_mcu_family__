@@ -30,7 +30,7 @@ class libhal___platform___conan(ConanFile):
     topics = ("microcontroller", "__platform__",)
     settings = "compiler", "build_type", "os", "arch"
 
-    python_requires = "libhal-bootstrap/[^1.0.0]"
+    python_requires = "libhal-bootstrap/[^2.0.0]"
     python_requires_extend = "libhal-bootstrap.library"
 
     options = {
@@ -58,8 +58,13 @@ class libhal___platform___conan(ConanFile):
         ]
 
     def requirements(self):
+        # Adds libhal and libhal-util as transitive headers, meaning library
+        # consumers get the libhal and libhal-util headers downstream.
+        bootstrap = self.python_requires["libhal-bootstrap"]
+        bootstrap.module.add_library_requirements(self)
+
         # Replace with appropriate processor library
-        self.requires("libhal-armcortex/[^3.0.2]")
+        self.requires("libhal-armcortex/[^4.0.0]")
 
     def package_info(self):
         self.cpp_info.set_property("cmake_target_name", "libhal::__platform__")
