@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace hal::__platform__ {   // NOLINT
-extern void output_pin_test();  // NOLINT
-}  // namespace hal::__platform__
+namespace hal::__arm_mcu_family__ {  // NOLINT
+extern void output_pin_test();       // NOLINT
+}  // namespace hal::__arm_mcu_family__
 
 int main()
 {
-  hal::__platform__::output_pin_test();
+  hal::__arm_mcu_family__::output_pin_test();
 }
