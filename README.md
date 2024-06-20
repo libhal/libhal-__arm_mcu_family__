@@ -20,6 +20,9 @@ Apache 2.0; see [`LICENSE`](LICENSE) for details.
 
 ## Making a new platform driver (Delete section below)
 
+See [ARM Cortex-M Series Platform Bringup](https://libhal.github.io/3.1/contributor_guide/arm_cortex_m_bringup/)
+for details on how to bring up the system.
+
 Use [libhal/libhal-lpc40](https://github.com/libhal/libhal-lpc40/) as an
 example of the sections a README should have.
 

@@ -38,12 +38,22 @@ jobs:
       compiler_package: arm-gnu-toolchain
     secrets: inherit
 
-  demo_check:
+  demo_check_profile1:
     uses: libhal/ci/.github/workflows/demo_builder.yml@5.x.y
     with:
       compiler_profile_url: https://github.com/libhal/arm-gnu-toolchain.git
       compiler_profile: v1/arm-gcc-12.3
       # TODO: Update this with the correct information
       platform_profile_url: https://github.com/libhal/libhal-__platform__.git
-      platform_profile: profile1
+      platform_profile: v1/profile1
+    secrets: inherit
+
+  demo_check_profile2:
+    uses: libhal/ci/.github/workflows/demo_builder.yml@5.x.y
+    with:
+      compiler_profile_url: https://github.com/libhal/arm-gnu-toolchain.git
+      compiler_profile: v1/arm-gcc-12.3
+      # TODO: Update this with the correct information
+      platform_profile_url: https://github.com/libhal/libhal-__platform__.git
+      platform_profile: v1/profile2
     secrets: inherit
