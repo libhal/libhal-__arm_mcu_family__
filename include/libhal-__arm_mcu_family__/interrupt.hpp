@@ -12,25 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/output_pin.hpp>
+#pragma once
 
-namespace hal::__arm_mcu_family__ {  // NOLINT
-
-void output_pin::driver_configure(const settings& p_settings)
-{
-  // Fill this out
-  static_cast<void>(p_settings);  // delete this after impl
-}
-
-void output_pin::driver_level(bool p_high)
-{
-  // Fill this out
-  static_cast<void>(p_high);  // delete this after impl
-}
-
-bool output_pin::driver_level()
-{
-  // Replace this with the correct implementation
-  return true;
-}
+namespace hal::__arm_mcu_family__ {
+/**
+ * @brief Initialize interrupts for the __arm_mcu_family__ series processors
+ *
+ * Only initializes after the first call. Does nothing afterwards. Can be
+ * called multiple times without issue.
+ *
+ */
+void initialize_interrupts();
 }  // namespace hal::__arm_mcu_family__

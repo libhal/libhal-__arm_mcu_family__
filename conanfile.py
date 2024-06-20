@@ -21,16 +21,16 @@ import os
 required_conan_version = ">=2.0.14"
 
 
-class libhal___platform___conan(ConanFile):
-    name = "libhal-__platform__"
+class libhal___arm_mcu_family___conan(ConanFile):
+    name = "libhal-__arm_mcu_family__"
     license = "Apache-2.0"
-    homepage = "https://libhal.github.io/libhal-__platform__"
-    description = ("A collection of drivers and libraries for the __platform__ "
-                   "series microcontrollers.")
-    topics = ("microcontroller", "__platform__",)
+    homepage = "https://libhal.github.io/libhal-__arm_mcu_family__"
+    description = ("A collection of drivers and libraries for the"
+                   "__arm_mcu_family__ series microcontrollers.")
+    topics = ("microcontroller", "__arm_mcu_family__",)
     settings = "compiler", "build_type", "os", "arch"
 
-    python_requires = "libhal-bootstrap/[^2.0.0]"
+    python_requires = "libhal-bootstrap/[^2.1.2]"
     python_requires_extend = "libhal-bootstrap.library"
 
     options = {
@@ -45,6 +45,7 @@ class libhal___platform___conan(ConanFile):
         "platform": "ANY",
     }
 
+    # TODO: Update profile names to the names appropriate to the chip family
     @property
     def _use_linker_script(self):
         return (self.options.platform == "profile1" or
@@ -54,7 +55,7 @@ class libhal___platform___conan(ConanFile):
         platform = str(self.options.platform)
         self.cpp_info.exelinkflags = [
             "-L" + os.path.join(self.package_folder, "linker_scripts"),
-            "-T" + os.path.join("libhal-__platform__", platform + ".ld"),
+            "-T" + os.path.join("libhal-__arm_mcu_family__", platform + ".ld"),
         ]
 
     def requirements(self):
@@ -62,22 +63,21 @@ class libhal___platform___conan(ConanFile):
         # consumers get the libhal and libhal-util headers downstream.
         bootstrap = self.python_requires["libhal-bootstrap"]
         bootstrap.module.add_library_requirements(self)
-
-        # Replace with appropriate processor library
-        self.requires("libhal-armcortex/[^4.0.0]")
+        self.requires("libhal-armcortex/[^5.0.0]", transitive_headers=True)
 
     def package_info(self):
-        self.cpp_info.set_property("cmake_target_name", "libhal::__platform__")
-        self.cpp_info.libs = ["libhal-__platform__"]
+        self.cpp_info.set_property(
+            "cmake_target_name", "libhal::__arm_mcu_family__")
+        self.cpp_info.libs = ["libhal-__arm_mcu_family__"]
 
         if self.settings.os == "baremetal" and self._use_linker_script:
             self.add_linker_scripts_to_link_flags()
-
-            self.buildenv_info.define("LIBHAL_PLATFORM",
-                                      str(self.options.platform))
+            platform_string = str(self.options.platform)
+            self.buildenv_info.define("LIBHAL_PLATFORM", platform_string)
             self.buildenv_info.define("LIBHAL_PLATFORM_LIBRARY",
-                                      "__platform__")
+                                      "__arm_mcu_family__")
 
     def package_id(self):
+        # The platform name should NOT effect the binary model
         if self.info.options.get_safe("platform"):
             del self.info.options.platform

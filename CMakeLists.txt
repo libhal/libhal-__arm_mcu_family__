@@ -14,13 +14,18 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-project(libhal-__platform__ LANGUAGES CXX)
+project(libhal-__arm_mcu_family__ LANGUAGES CXX)
 
 libhal_test_and_make_library(
-  LIBRARY_NAME libhal-__platform__
+  LIBRARY_NAME libhal-__arm_mcu_family__
 
   SOURCES
+  src/clock.cpp
+  src/dma.cpp
+  src/interrupt.cpp
   src/output_pin.cpp
+  src/pin.cpp
+  src/power.cpp
 
   TEST_SOURCES
   tests/output_pin.test.cpp
@@ -29,8 +34,10 @@ libhal_test_and_make_library(
   PACKAGES
   libhal
   libhal-util
+  libhal-armcortex
 
   LINK_LIBRARIES
   libhal::libhal
   libhal::util
+  libhal::armcortex
 )

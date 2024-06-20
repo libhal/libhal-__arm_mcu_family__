@@ -12,25 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/output_pin.hpp>
+#include <libhal-__arm_mcu_family__/constants.hpp>
+#include <libhal-armcortex/interrupt.hpp>
 
-namespace hal::__arm_mcu_family__ {  // NOLINT
-
-void output_pin::driver_configure(const settings& p_settings)
+namespace hal::__arm_mcu_family__ {
+void initialize_interrupts()
 {
-  // Fill this out
-  static_cast<void>(p_settings);  // delete this after impl
-}
-
-void output_pin::driver_level(bool p_high)
-{
-  // Fill this out
-  static_cast<void>(p_high);  // delete this after impl
-}
-
-bool output_pin::driver_level()
-{
-  // Replace this with the correct implementation
-  return true;
+  hal::cortex_m::initialize_interrupts<irq::max>();
 }
 }  // namespace hal::__arm_mcu_family__

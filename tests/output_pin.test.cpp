@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__platform__/output_pin.hpp>
+#include <libhal-__arm_mcu_family__/output_pin.hpp>
 
 #include <boost/ut.hpp>
 
-namespace hal::__platform__ {  // NOLINT
+namespace hal::__arm_mcu_family__ {  // NOLINT
 void output_pin_test()
 {
   using namespace boost::ut;
@@ -28,4 +28,4 @@ void output_pin_test()
     // Verify
   };
 };
-}  // namespace hal::__platform__
+}  // namespace hal::__arm_mcu_family__

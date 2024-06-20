@@ -14,19 +14,26 @@
 
 #pragma once
 
-#include <libhal/output_pin.hpp>
+#include "constants.hpp"
 
-namespace hal::__platform__ {  // NOLINT
-class output_pin : public hal::output_pin
-{
-public:
-  /// TODO: Update constructor
-  output_pin() = default;
+namespace hal::__arm_mcu_family__ {  // NOLINT
+/**
+ * @brief Power on the peripheral
+ *
+ */
+void power_on(peripheral p_peripheral);
 
-private:
-  // Add constructor
-  void driver_configure(const settings& p_settings) override;
-  void driver_level(bool p_high) override;
-  bool driver_level() override;
-};
-}  // namespace hal::__platform__
+/**
+ * @brief Check if the peripheral is powered on
+ *
+ * @return true - peripheral is on
+ * @return false - peripheral is off
+ */
+[[nodiscard]] bool is_on(peripheral p_peripheral);
+
+/**
+ * @brief Power off peripheral
+ *
+ */
+void power_off(peripheral p_peripheral);
+}  // namespace hal::__arm_mcu_family__

@@ -12,25 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/output_pin.hpp>
+#include <libhal-__arm_mcu_family__/constants.hpp>
 
 namespace hal::__arm_mcu_family__ {  // NOLINT
-
-void output_pin::driver_configure(const settings& p_settings)
+void power_on(peripheral p_peripheral)
 {
-  // Fill this out
-  static_cast<void>(p_settings);  // delete this after impl
+  // TODO: Implement this
+  static_cast<void>(p_peripheral);  // delete this after impl
 }
-
-void output_pin::driver_level(bool p_high)
+bool is_on(peripheral p_peripheral)
 {
-  // Fill this out
-  static_cast<void>(p_high);  // delete this after impl
+  // TODO: Implement this
+  static_cast<void>(p_peripheral);  // delete this after impl
+  return false;
 }
-
-bool output_pin::driver_level()
+void power_off(peripheral p_peripheral)
 {
-  // Replace this with the correct implementation
-  return true;
+  // TODO: Implement this
+  static_cast<void>(p_peripheral);  // delete this after impl
 }
 }  // namespace hal::__arm_mcu_family__
