@@ -18,7 +18,7 @@
 
 #include "constants.hpp"
 
-namespace hal::__arm_mcu_family__ {
+namespace hal::__platform__ {
 
 /// Structure representing the platform's clock tree and the ways it can be
 /// configured.
@@ -59,4 +59,4 @@ bool using_external_oscillator();
  *
  */
 void configure_clocks(const clock_tree& p_clock_tree);
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

@@ -19,7 +19,7 @@
 
 #include <libhal/functional.hpp>
 
-namespace hal::__arm_mcu_family__ {
+namespace hal::__platform__ {
 // TODO: Update this to fit your system
 struct dma
 {
@@ -101,4 +101,4 @@ void initialize_dma();
  */
 void setup_dma_transfer(const dma& p_dma_instructions,
                         hal::callback<void(void)> p_interrupt_callback);
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

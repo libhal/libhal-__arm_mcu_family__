@@ -14,13 +14,13 @@
 
 #pragma once
 
-namespace hal::__arm_mcu_family__ {
+namespace hal::__platform__ {
 /**
- * @brief Initialize interrupts for the __arm_mcu_family__ series processors
+ * @brief Initialize interrupts for the __platform__ series processors
  *
  * Only initializes after the first call. Does nothing afterwards. Can be
  * called multiple times without issue.
  *
  */
 void initialize_interrupts();
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

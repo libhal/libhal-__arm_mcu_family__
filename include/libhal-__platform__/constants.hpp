@@ -18,7 +18,7 @@
 
 #include <libhal-armcortex/interrupt.hpp>
 
-namespace hal::__arm_mcu_family__ {
+namespace hal::__platform__ {
 /// List of each peripheral and their power on id number for this platform
 enum class peripheral : std::uint8_t
 {
@@ -44,4 +44,4 @@ enum class irq : cortex_m::irq_t
   // Always have a max at the end of the list
   max,
 };
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

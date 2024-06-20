@@ -16,7 +16,7 @@
 
 #include <cstdint>
 
-namespace hal::__arm_mcu_family__ {  // NOLINT
+namespace hal::__platform__ {
 
 /**
  * @brief Struct representing a specific and unique pin on the device
@@ -49,4 +49,4 @@ struct pin_config_t
  * @param p_config - Configuration to set the pin to
  */
 void configure_pin(pin_select_t p_pin_select, pin_config_t p_config);
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

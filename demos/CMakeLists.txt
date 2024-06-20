@@ -22,8 +22,8 @@ libhal_build_demos(
     blinker
 
     PACKAGES
-    libhal-__arm_mcu_family__
+    libhal-__platform__
 
     LINK_LIBRARIES
-    libhal::__arm_mcu_family__
+    libhal::__platform__
 )

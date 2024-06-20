@@ -14,10 +14,10 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-project(libhal-__arm_mcu_family__ LANGUAGES CXX)
+project(libhal-__platform__ LANGUAGES CXX)
 
 libhal_test_and_make_library(
-  LIBRARY_NAME libhal-__arm_mcu_family__
+  LIBRARY_NAME libhal-__platform__
 
   SOURCES
   src/clock.cpp

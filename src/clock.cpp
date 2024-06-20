@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/clock.hpp>
-#include <libhal-__arm_mcu_family__/constants.hpp>
+#include <libhal-__platform__/clock.hpp>
+#include <libhal-__platform__/constants.hpp>
 
 using namespace hal::literals;
 
-namespace hal::__arm_mcu_family__ {
+namespace hal::__platform__ {
 void maximize_all_clocks(hertz p_external_crystal_frequency)
 {
   // TODO: Use p_external_crystal_frequency to generate a clock tree that will
@@ -45,4 +45,4 @@ void configure_clocks(const clock_tree& p_clock_tree)
   // TODO: Configure the system's clock tree.
   static_cast<void>(p_clock_tree);  // delete this after impl
 }
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

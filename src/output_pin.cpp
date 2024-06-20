@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/output_pin.hpp>
+#include <libhal-__platform__/output_pin.hpp>
 
-namespace hal::__arm_mcu_family__ {  // NOLINT
+namespace hal::__platform__ {
 
 void output_pin::driver_configure(const settings& p_settings)
 {
@@ -33,4 +33,4 @@ bool output_pin::driver_level()
   // Replace this with the correct implementation
   return true;
 }
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

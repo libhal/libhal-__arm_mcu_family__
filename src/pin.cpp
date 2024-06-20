@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/pin.hpp>
+#include <libhal-__platform__/pin.hpp>
 
-namespace hal::__arm_mcu_family__ {  // NOLINT
+namespace hal::__platform__ {
 void configure_pin(pin_select_t p_pin_select, pin_config_t p_config)
 {
   // TODO: Implement this
   static_cast<void>(p_pin_select);  // delete this after impl
   static_cast<void>(p_config);      // delete this after impl
 }
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/dma.hpp>
+#include <libhal-__platform__/dma.hpp>
 
-namespace hal::__arm_mcu_family__ {
+namespace hal::__platform__ {
 void initialize_dma()
 {
   // TODO: Implement this
@@ -27,4 +27,4 @@ void setup_dma_transfer(const dma& p_dma_instructions,
   static_cast<void>(p_dma_instructions);    // delete this after impl
   static_cast<void>(p_interrupt_callback);  // delete this after impl
 }
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__

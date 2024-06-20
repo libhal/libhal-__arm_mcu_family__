@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <libhal-__arm_mcu_family__/constants.hpp>
+#include <libhal-__platform__/constants.hpp>
 #include <libhal-armcortex/interrupt.hpp>
 
-namespace hal::__arm_mcu_family__ {
+namespace hal::__platform__ {
 void initialize_interrupts()
 {
   hal::cortex_m::initialize_interrupts<irq::max>();
 }
-}  // namespace hal::__arm_mcu_family__
+}  // namespace hal::__platform__
