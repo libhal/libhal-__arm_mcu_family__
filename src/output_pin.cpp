@@ -16,7 +16,7 @@
 
 namespace hal::__arm_mcu_family__ {  // NOLINT
 
-void output_pin::driver_configure(const settings& p_settings)
+void output_pin::driver_configure(settings const& p_settings)
 {
   // Fill this out
   static_cast<void>(p_settings);  // delete this after impl

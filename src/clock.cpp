@@ -40,7 +40,7 @@ bool using_external_oscillator()
   return false;
 }
 
-void configure_clocks(const clock_tree& p_clock_tree)
+void configure_clocks(clock_tree const& p_clock_tree)
 {
   // TODO: Configure the system's clock tree.
   static_cast<void>(p_clock_tree);  // delete this after impl

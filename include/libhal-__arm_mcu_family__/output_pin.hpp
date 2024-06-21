@@ -25,7 +25,7 @@ public:
 
 private:
   // Add constructor
-  void driver_configure(const settings& p_settings) override;
+  void driver_configure(settings const& p_settings) override;
   void driver_level(bool p_high) override;
   bool driver_level() override;
 };

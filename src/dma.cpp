@@ -20,7 +20,7 @@ void initialize_dma()
   // TODO: Implement this
 }
 
-void setup_dma_transfer(const dma& p_dma_instructions,
+void setup_dma_transfer(dma const& p_dma_instructions,
                         hal::callback<void(void)> p_interrupt_callback)
 {
   // TODO: Implement this
