@@ -58,5 +58,5 @@ bool using_external_oscillator();
  * @brief Apply the clock configuration to hardware
  *
  */
-void configure_clocks(const clock_tree& p_clock_tree);
+void configure_clocks(clock_tree const& p_clock_tree);
 }  // namespace hal::__arm_mcu_family__

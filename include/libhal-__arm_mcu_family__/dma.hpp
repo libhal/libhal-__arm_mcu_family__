@@ -69,8 +69,8 @@ struct dma
   };
 
   // TODO: Update this list to match whats available for your mcu
-  const volatile void* source;
-  volatile void* destination;
+  void const volatile* source;
+  void volatile* destination;
   length_t length;
   transfer_type transfer_type;
   transfer_width source_transfer_width;
@@ -99,6 +99,6 @@ void initialize_dma();
  * @param p_dma_instructions - Instructions for the dma transfer
  * @param p_interrupt_callback - Callback when the dma transfer has complete
  */
-void setup_dma_transfer(const dma& p_dma_instructions,
+void setup_dma_transfer(dma const& p_dma_instructions,
                         hal::callback<void(void)> p_interrupt_callback);
 }  // namespace hal::__arm_mcu_family__
