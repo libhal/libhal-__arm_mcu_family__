@@ -82,15 +82,6 @@ struct dma
 };
 
 /**
- * @brief Initialize DMA controller
- *
- * On first call, enables DMA. Once enabled, additional calls to this function
- * do nothing.
- *
- */
-void initialize_dma();
-
-/**
  * @brief Setup and start a dma transfer
  *
  * This API will use an available dma channel for the transfer. This API will
