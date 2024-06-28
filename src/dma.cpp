@@ -14,17 +14,31 @@
 
 #include <libhal-__arm_mcu_family__/dma.hpp>
 
+#include <atomic>
+
 namespace hal::__arm_mcu_family__ {
 void initialize_dma()
 {
   // TODO: Implement this
+  // Ensure that a check is performed to determine if dma is already
+  // initialized and if so, return early.
 }
+
+std::atomic_flag dma_busy = ATOMIC_FLAG_INIT;
 
 void setup_dma_transfer(dma const& p_dma_instructions,
                         hal::callback<void(void)> p_interrupt_callback)
 {
+  while (dma_busy.test_and_set(std::memory_order_acquire)) {
+    continue;  // spin lock
+  }
+
+  initialize_dma();
+
   // TODO: Implement this
   static_cast<void>(p_dma_instructions);    // delete this after impl
   static_cast<void>(p_interrupt_callback);  // delete this after impl
+
+  dma_busy.clear();
 }
 }  // namespace hal::__arm_mcu_family__
