@@ -64,6 +64,7 @@ class libhal___arm_mcu_family___conan(ConanFile):
         bootstrap = self.python_requires["libhal-bootstrap"]
         bootstrap.module.add_library_requirements(self)
         self.requires("libhal-armcortex/[^5.0.0]", transitive_headers=True)
+        self.requires("libhal-soft/[^5.1.0]")
 
     def package_info(self):
         self.cpp_info.set_property(

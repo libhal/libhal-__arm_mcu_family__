@@ -35,9 +35,11 @@ libhal_test_and_make_library(
   libhal
   libhal-util
   libhal-armcortex
+  libhal-soft
 
   LINK_LIBRARIES
   libhal::libhal
   libhal::util
   libhal::armcortex
+  libhal::soft
 )

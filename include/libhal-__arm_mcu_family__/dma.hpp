@@ -18,6 +18,7 @@
 #include <cstdint>
 
 #include <libhal/functional.hpp>
+#include <libhal/lock.hpp>
 
 namespace hal::__arm_mcu_family__ {
 // TODO: Update this to fit your system
@@ -80,6 +81,20 @@ struct dma
   request destination_peripheral;
   bool destination_increment;
 };
+
+/**
+ * @brief Set the dma lock object
+ *
+ * This API is not thread safe and should be performed before dma is used
+ * between threads. The default dma lock object is a hal::atomic_spin_lock which
+ * is operating system agnostic but inefficient. If you are using an operating
+ * system, use this call to replace the original spin lock with the appropriate
+ * mutex.
+ *
+ * @param p_lock - basic lock to be used for locking dma across threads. Should
+ * be a OS safe mutex.
+ */
+void set_dma_lock(hal::basic_lock& p_lock);
 
 /**
  * @brief Setup and start a dma transfer
