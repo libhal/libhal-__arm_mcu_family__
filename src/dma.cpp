@@ -14,9 +14,14 @@
 
 #include <libhal-__arm_mcu_family__/dma.hpp>
 
-#include <atomic>
+#include <mutex>
+
+#include <libhal-soft/atomic_spin_lock.hpp>
 
 namespace hal::__arm_mcu_family__ {
+namespace identifier {
+
+}
 void initialize_dma()
 {
   // TODO: Implement this
@@ -24,21 +29,23 @@ void initialize_dma()
   // initialized and if so, return early.
 }
 
-std::atomic_flag dma_busy = ATOMIC_FLAG_INIT;
+hal::soft::atomic_spin_lock dma_spin_lock;
+hal::basic_lock* dma_lock = &dma_spin_lock;
+
+void set_dma_lock(hal::basic_lock& p_lock)
+{
+  dma_lock = &p_lock;
+}
 
 void setup_dma_transfer(dma const& p_dma_instructions,
                         hal::callback<void(void)> p_interrupt_callback)
 {
-  while (dma_busy.test_and_set(std::memory_order_acquire)) {
-    continue;  // spin lock
-  }
+  std::lock_guard lock_dma(*dma_lock);
 
   initialize_dma();
 
   // TODO: Implement this
   static_cast<void>(p_dma_instructions);    // delete this after impl
   static_cast<void>(p_interrupt_callback);  // delete this after impl
-
-  dma_busy.clear();
 }
 }  // namespace hal::__arm_mcu_family__
